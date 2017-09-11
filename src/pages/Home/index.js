@@ -34,20 +34,20 @@ class Home extends Component {
           {
           (isError) ? <div>error has occured</div> :
           (isFetching) ? <div>loading...</div> :
-              <ul>
-              {
-              stocks.map((stock, i) => {
-                return (
-                  <li
-                    data-ticker={stock[0]}
-                    key={stock[0] + stock[1]}
-                    onClick={this.handleSingleStock} >
-                      {stock[2]}
-                  </li>
-                );
-              })
-              }
-              </ul>
+            <ul>
+            {
+            stocks.map((stock, i) => {
+              return (
+                <li
+                  data-ticker={stock[0]}
+                  key={stock[0] + stock[1]}
+                  onClick={this.handleSingleStock} >
+                    {stock[2]}
+                </li>
+              );
+            })
+            }
+            </ul>
           }
           </div>
           <div className="single-stock">

@@ -12,7 +12,7 @@ const setRequestStatus = (isFetching) => ({
 
 const receiveStocks = (json) => ({
   type: RECEIVE_STOCKS,
-  stocks: json.securities.data.map(child => child)
+  stocks: json.map(child => child)
 });
 
 const setErrorStatus = (isError) => ({
@@ -29,7 +29,13 @@ export const fetchData = () => dispatch => {
       return response.json();
     })
     .then(json => {
-      dispatch(receiveStocks(json));
+      //отбираем только "голубые фишки"
+      const filtered = json.securities.data.filter((item) => {
+        if (item[1] === 'EQDP') {
+          return item;
+        }
+      })
+      dispatch(receiveStocks(filtered));
     })
     .catch((error) => {
       dispatch(setErrorStatus(true))
