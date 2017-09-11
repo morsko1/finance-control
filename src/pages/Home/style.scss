@@ -1,0 +1,11 @@
+.home-container {
+  display: flex;
+}
+.full-list,
+.single-stock {
+  width: 50%;
+}
+.single-stock {
+  position: fixed;
+  left: 50%;
+}
