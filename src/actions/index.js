@@ -22,20 +22,14 @@ const setErrorStatus = (isError) => ({
 
 export const fetchData = () => dispatch => {
   dispatch(setRequestStatus(true));
-  fetch(`https://iss.moex.com/iss/engines/stock/markets/shares/securities.json`)
+  fetch(`https://iss.moex.com/iss/engines/stock/markets/shares/boards/eqdp/securities.json`)
     .then(response => {
       dispatch(setRequestStatus(false));
       dispatch(setErrorStatus(false));
       return response.json();
     })
     .then(json => {
-      //отбираем только "голубые фишки"
-      const filtered = json.securities.data.filter((item) => {
-        if (item[1] === 'EQDP') {
-          return item;
-        }
-      })
-      dispatch(receiveStocks(filtered));
+      dispatch(receiveStocks(json.securities.data));
     })
     .catch((error) => {
       dispatch(setErrorStatus(true))
@@ -47,17 +41,17 @@ export const fetchData = () => dispatch => {
 
 const receiveSingleStock = (json) => ({
   type: RECEIVE_SINGLE_STOCK,
-  stock: json.securities.data[0]
+  stock: json
 });
 
 export const fetchSingleStock = (stockName) => dispatch => {
-  fetch(`https://iss.moex.com/iss/engines/stock/markets/shares/securities/${stockName}.json`)
+  fetch(`https://iss.moex.com/iss/engines/stock/markets/shares/boards/eqdp/securities/${stockName}.json`)
   .then(response => {
     dispatch(setErrorStatus(false));
     return response.json();
   })
   .then(json => {
-    dispatch(receiveSingleStock(json));
+    dispatch(receiveSingleStock(json.securities.data[0]));
   })
   .catch((error) => {
     dispatch(setErrorStatus(true))
