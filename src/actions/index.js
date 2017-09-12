@@ -22,7 +22,7 @@ const setErrorStatus = (isError) => ({
 
 export const fetchData = () => dispatch => {
   dispatch(setRequestStatus(true));
-  fetch(`https://iss.moex.com/iss/engines/stock/markets/shares/boards/eqdp/securities.json`)
+  fetch(`https://iss.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities.json?iss.meta=off&iss.only=securities`)
     .then(response => {
       dispatch(setRequestStatus(false));
       dispatch(setErrorStatus(false));
@@ -45,7 +45,7 @@ const receiveSingleStock = (json) => ({
 });
 
 export const fetchSingleStock = (stockName) => dispatch => {
-  fetch(`https://iss.moex.com/iss/engines/stock/markets/shares/boards/eqdp/securities/${stockName}.json`)
+  fetch(`https://iss.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities/${stockName}.json?iss.meta=off`)
   .then(response => {
     dispatch(setErrorStatus(false));
     return response.json();

@@ -5,6 +5,11 @@
 .single-stock {
   width: 50%;
 }
+.stock-li {
+  list-style-type: none;
+  padding: 0.2em 0;
+  cursor: pointer;
+}
 .single-stock {
   position: fixed;
   left: 50%;

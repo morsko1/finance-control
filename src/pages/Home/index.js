@@ -39,6 +39,7 @@ class Home extends Component {
             stocks.map((stock, i) => {
               return (
                 <li
+                  className="stock-li"
                   data-ticker={stock[0]}
                   key={stock[0] + stock[1]}
                   onClick={this.handleSingleStock} >
