@@ -2,7 +2,9 @@ import {
   SET_REQUEST_STATUS,
   RECEIVE_STOCKS,
   RECEIVE_SINGLE_STOCK,
-  SET_ERROR_STATUS
+  SET_ERROR_STATUS,
+  ADD_MONEY,
+  TAKE_MONEY
 } from '../constants';
 
 const setRequestStatus = (isFetching) => ({
@@ -58,3 +60,15 @@ export const fetchSingleStock = (stockName) => dispatch => {
     console.log(error)
   })
 }
+
+//*******************************************************************************************
+
+export const addMoney = (money) => ({
+  type: ADD_MONEY,
+  money
+});
+
+export const takeMoney = (money) => ({
+  type: TAKE_MONEY,
+  money
+});
