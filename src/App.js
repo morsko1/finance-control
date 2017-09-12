@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
 
 import store from './store';
 import Home from './pages/Home/';
+import Portfolio from './pages/Portfolio/';
 import NotFound from './pages/NotFound/';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/portfolio" component={Portfolio} />
             <Route component={NotFound} />
           </Switch>
         </Router>
@@ -24,4 +26,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;

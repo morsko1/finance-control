@@ -4,7 +4,10 @@ import {
   fetchData,
   fetchSingleStock
  } from '../../actions';
- import './style.scss';
+ import {
+  Link
+ } from 'react-router-dom';
+import './style.scss';
 
 class Home extends Component {
   constructor (props) {
@@ -27,6 +30,7 @@ class Home extends Component {
     const {stocks, stock, isFetching, isError} = this.props;
     return (
       <div>
+        <Link to="./portfolio">Go to Portfolio</Link>
         <h4>You can request stocks list</h4>
         <button onClick={this.handleClick}>get list of stocks</button>
         <div className="home-container">
